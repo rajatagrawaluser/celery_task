@@ -3,6 +3,7 @@ from fastapi.responses import JSONResponse
 
 from celery import Celery
 from pydantic import BaseModel, Field
+from worker import create_task
 
 celery = Celery('simple_worker',
             broker="redis://localhost:6379",
@@ -21,6 +22,7 @@ app = FastAPI(
 @app.post("/tasks", status_code=201, tags=["Task"])
 def run_task(request:RequestModel):
     kwargs={"total_steps": request.total_steps}
+    # return create_task(**kwargs) #will be helpful while developing task script.
     task = celery.send_task('worker.create_task', kwargs=kwargs)
     return JSONResponse({"task_id": task.id})
 
