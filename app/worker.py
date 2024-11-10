@@ -10,9 +10,8 @@ celery = Celery('tasks',
 
 @celery.task(bind=True)
 def create_task(self,**data):
-    args = data
-    args.update({"task":self})
-    result = perform_calculation(args)
+    data.update({"task":self})
+    result = perform_calculation(data)
     return result
 
 def perform_calculation(args):
