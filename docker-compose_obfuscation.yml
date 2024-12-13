@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+
+  obfuscation:
+    image: python:3.11.2-slim-buster
+    container_name: obfuscation
+    volumes:
+      - C:\Users\shobh\Desktop\side_project\celery_task:/usr/src/app
+    working_dir: /usr/src/app
+    command: >
+      sh -c "echo Starting the app && ls -la && ./script.sh"
+  
