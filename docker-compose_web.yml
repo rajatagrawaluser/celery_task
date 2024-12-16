@@ -8,7 +8,7 @@ services:
     ports:
       - "8004:8000"
     volumes:
-      - .:/usr/src/app
+      - C:\Users\shobh\Desktop\side_project\celery_task:/usr/src/app
     command: uvicorn app.main:app --host 0.0.0.0 --reload
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0

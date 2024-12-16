@@ -4,6 +4,9 @@ import sys
 # sys.path.append("/usr/src/app/tasks")
 sys.path.append(os.getcwd()+"/app/tasks")
 from app.tasks.task import perform_calculation
+from app.tasks.task2 import add
+
+add(2,2)
 
 from celery import Celery
 
